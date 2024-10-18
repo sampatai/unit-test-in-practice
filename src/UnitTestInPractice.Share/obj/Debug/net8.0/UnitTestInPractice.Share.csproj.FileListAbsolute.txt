@@ -1,0 +1,12 @@
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\bin\Debug\net8.0\UnitTestInPractice.Share.deps.json
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\bin\Debug\net8.0\UnitTestInPractice.Share.dll
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\bin\Debug\net8.0\UnitTestInPractice.Share.pdb
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.csproj.AssemblyReference.cache
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.GeneratedMSBuildEditorConfig.editorconfig
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.AssemblyInfoInputs.cache
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.AssemblyInfo.cs
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.csproj.CoreCompileInputs.cache
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.dll
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\refint\UnitTestInPractice.Share.dll
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.pdb
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\ref\UnitTestInPractice.Share.dll
