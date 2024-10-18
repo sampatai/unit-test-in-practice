@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace UnitTestInPractice.Domain.Root
 {
@@ -11,10 +12,9 @@ namespace UnitTestInPractice.Domain.Root
 
         }
 
-
         public Guid AssessmentGUID { get; private set; }
         public string Name { get; private set; }
-        public Survey Survey { get; private set; }
+       
         public DateTime DateCreated { get; private set; }
         public AssessmentStatus Status { get; private set; }
         public Score? FinalScore { get; private set; }
@@ -23,13 +23,12 @@ namespace UnitTestInPractice.Domain.Root
         private List<Response> _responses;
         public IReadOnlyCollection<Response> Responses => _responses.AsReadOnly();
 
-        public Assessment(string name, Survey survey)
+        public Assessment(string name)
         {
-            Guard.Against.Null(survey, nameof(survey));
+            
             Guard.Against.NullOrEmpty(name, nameof(name));
             AssessmentGUID = Guid.NewGuid();
-            Name = name;
-            Survey = survey;
+            Name = name;            
             DateCreated = DateTime.UtcNow;
             Status = AssessmentStatus.Pending;
             _responses = new List<Response>();
@@ -38,29 +37,26 @@ namespace UnitTestInPractice.Domain.Root
 
         public void AddResponse(Guid questionId, string answer)
         {
-            var question = Survey.Questions.FirstOrDefault(q => q.QuestionGUID == questionId);
-            if (question == null)
-                throw new ArgumentException("Invalid question ID.");
+            Guard.Against.Default(questionId, nameof(questionId));
+            Guard.Against.NullOrEmpty(answer, nameof(answer));
 
             _responses.Add(new Response(questionId, answer));
             Status = AssessmentStatus.InProgress;
         }
 
 
-        public void CompleteAssessment()
+        public void CompleteAssessment(int totalQuestion)
         {
-            if (_responses.Count != Survey.Questions.Count)
-                throw new InvalidOperationException("All questions must be answered before completing the assessment.");
-
+           
             Status = AssessmentStatus.Completed;
-            FinalScore = CalculateScore();
+            FinalScore = CalculateScore(totalQuestion);
             AssessmentFeedback = GenerateFeedback();
         }
 
 
-        private Score CalculateScore()
+        private Score CalculateScore(int  totalQuestion)
         {        
-            int scoreValue = (_responses.Count * 100) / Survey.Questions.Count;
+            int scoreValue = (_responses.Count * 100) / totalQuestion;
             return new Score(scoreValue);
         }
 
