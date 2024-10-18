@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/UnitTestInPractice.Infrastructure/obj
+/src/.vs/UnitTestInPractice.Share
+/src/UnitTestInPractice.Application/obj
+/src/UnitTestInPractice.Domain/bin/Debug/net8.0
+/src/UnitTestInPractice.Domain/obj
+/src/UnitTestInPractice.Share/.vs
+/src/UnitTestInPractice.Share/bin/Debug/net8.0
