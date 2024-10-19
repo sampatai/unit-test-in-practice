@@ -1,6 +1,6 @@
 ﻿using UnitTestInPractice.Domain.Enum;
 
-namespace UnitTestInPractice.Application.Projections;
+namespace UnitTestInPractice.Application;
 
 public record FilterModel
 {

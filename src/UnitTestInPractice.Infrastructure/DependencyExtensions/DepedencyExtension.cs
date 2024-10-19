@@ -7,9 +7,9 @@ public static class DepedencyExtension
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-        services.AddScoped<IMovieRepository, AssessmentRepository>();
-        services.AddScoped<IReadOnlyMovieRepository, ReadOnlyAssessmentRepository>();
-        services.AddScoped<IEventLogRepository, EventLogRepository>();
+        services.AddScoped<IAssessmentRepository, AssessmentRepository>();
+        services.AddScoped<IReadOnlyAssessmentRepository, ReadOnlyAssessmentRepository>();
+        
 
         return services;
     }

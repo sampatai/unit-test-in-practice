@@ -1,4 +1,4 @@
-﻿using UnitTestInPractice.Application.Projections;
+﻿using UnitTestInPractice.Application;
 using UnitTestInPractice.Domain.Root;
 using UnitTestInPractice.Infrastructure.Extensions;
 namespace UnitTestInPractice.Infrastructure.Repository;
@@ -14,7 +14,7 @@ public class ReadOnlyAssessmentRepository(UnitTestInPracticeDbContext UnitTestIn
             .AsQueryable();
 
 
-            query = query.WhereIf(!string.IsNullOrEmpty(searchModel.Name), m => m.Name.Contains(searchModel.Name, StringComparison.OrdinalIgnoreCase));
+            query = query.WhereIf(!string.IsNullOrEmpty(searchModel.Name), m => m.Details.FullName.Contains(searchModel.Name, StringComparison.OrdinalIgnoreCase));
             query = query.WhereIf(searchModel.DateCreated.HasValue, m => m.DateCreated.Date == searchModel.DateCreated!.Value.Date);
             query = query.WhereIf(searchModel.Status != null, m => m.Status== searchModel.Status);
 
@@ -57,7 +57,7 @@ public class ReadOnlyAssessmentRepository(UnitTestInPracticeDbContext UnitTestIn
                  .Assessments
                  .Include(x => x.Responses)
                  .Include(x => x.AssessmentFeedback)
-                 .Include(x => x.FinalScore)
+                 .Include(x => x.Details)
                  .FirstOrDefaultAsync(x => x.AssessmentGUID.Equals(AssessmentGuid), cancellationToken);
         }
         catch (Exception ex)

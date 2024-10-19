@@ -30,7 +30,7 @@ public class AssessmentRepository(UnitTestInPracticeDbContext UnitTestInPractice
                   .Assessments
                   .Include(x => x.Responses)
                   .Include(x => x.AssessmentFeedback)
-                  .Include(x=>x.FinalScore)
+                  .Include(x=>x.Details)
                   .FirstOrDefaultAsync(x => x.AssessmentGUID.Equals(AssessmentGuid), cancellationToken);
         }
         catch (Exception ex)

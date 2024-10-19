@@ -1,8 +1,4 @@
-﻿
-
-using UnitTestInPractice.Application.Projections;
-
-namespace UnitTestInPractice.Application.Repository;
+﻿namespace UnitTestInPractice.Application.Repository;
 
 public interface IReadOnlyAssessmentRepository : IReadOnlyRepository<Assessment>
 {

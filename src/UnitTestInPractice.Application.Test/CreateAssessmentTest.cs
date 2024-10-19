@@ -22,7 +22,9 @@ namespace UnitTestInPractice.Application.Test
         private Fixture _fixture = new Fixture();
         private IMediator _mediator;
         private IServiceCollection _services;
+#pragma warning disable NUnit1032 // An IDisposable field/property should be Disposed in a TearDown method
         private ServiceProvider _provider;
+#pragma warning restore NUnit1032 // An IDisposable field/property should be Disposed in a TearDown method
         private CreateCommandFixture _commandFixture = new();
         [SetUp]
         

@@ -10,17 +10,15 @@ namespace UnitTestInPractice.Application.Test.Helper
     {
         private readonly Fixture _commandFixture;
         private readonly Faker _faker;
-
+        private CreateAssessment.Command _command;
         public CreateCommandFixture()
         {
             _commandFixture = new Fixture();
             _faker = new Faker();
         }
 
-        public CreateAssessment.Command Build()
-        {
-            return _commandFixture.Create<CreateAssessment.Command>();
-        }
+        public CreateAssessment.Command Build() => _command = _commandFixture.Create<CreateAssessment.Command>();
+
 
         public CreateCommandFixture WithFullName(string fullName)
         {

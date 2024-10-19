@@ -9,7 +9,7 @@ namespace UnitTestInPractice.Domain.Root
         }
 
         public Guid AssessmentGUID { get; private set; }
-        public string Name { get; private set; }
+       
 
         public DateTime DateCreated { get; private set; }
         public AssessmentStatus Status { get; private set; }

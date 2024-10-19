@@ -10,3 +10,4 @@ C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\
 C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\refint\UnitTestInPractice.Share.dll
 C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.pdb
 C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\ref\UnitTestInPractice.Share.dll
+C:\Demo-DDD\unit-test-in-practice\src\UnitTestInPractice.Share\obj\Debug\net8.0\UnitTestInPractice.Share.sourcelink.json

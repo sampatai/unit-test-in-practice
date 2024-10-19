@@ -1,5 +1,4 @@
 ﻿global using MediatR;
-global  using UnitTestInPractice.Domain.Aggregates.Root;
 
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.EntityFrameworkCore;
