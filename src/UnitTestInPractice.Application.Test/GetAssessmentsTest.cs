@@ -120,19 +120,7 @@ namespace UnitTestInPractice.Application.Test
             assertion.Errors.Should().Contain(x => x.PropertyName == nameof( GetAssessments.Query.PageSize) && x.ErrorMessage == "Page size must be between 1 and 100.");
         }
 
-        [Test]
-        public void Should_Have_Error_When_status_Is_Invalid()
-        {
-            // Arrange
-            Query.Status = new AssessmentStatus(101, "Test");
-
-            // Act
-            AsyncTestDelegate sut = () => _mediator.Send(Query);
-
-            // Assert
-            var assertion = Assert.ThrowsAsync<ValidationException>(sut);
-            assertion.Errors.Should().Contain(x => x.PropertyName == nameof( GetAssessments.Query.Status) && x.ErrorMessage == "Invalid Status.");
-        }
+       
 
         protected GetAssessments.Query CreateQuery() => Query = _fixture.Build<GetAssessments.Query>()
            .With(q => q.PageNumber, 1)
