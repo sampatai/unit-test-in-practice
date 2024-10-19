@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTestInPractice.Application\UnitTestInPractice.Application.csproj" />
+    <ProjectReference Include="..\UnitTestInPractice.Domain\UnitTestInPractice.Domain.csproj" />
+    <ProjectReference Include="..\UnitTestInPractice.Share\UnitTestInPractice.Share.csproj" />
+  </ItemGroup>
+
 </Project>
