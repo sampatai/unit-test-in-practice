@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-
+﻿
 namespace UnitTestInPractice.Domain.Root
 {
     public class Assessment : Entity, IAggregateRoot
@@ -14,25 +10,26 @@ namespace UnitTestInPractice.Domain.Root
 
         public Guid AssessmentGUID { get; private set; }
         public string Name { get; private set; }
-       
+
         public DateTime DateCreated { get; private set; }
         public AssessmentStatus Status { get; private set; }
-        public Score? FinalScore { get; private set; }
+        public AssessmentTakerDetails Details { get; private set; }
         public Feedback? AssessmentFeedback { get; private set; }
 
-        private List<Response> _responses;
+        private List<Response> _responses = new();
         public IReadOnlyCollection<Response> Responses => _responses.AsReadOnly();
 
-        public Assessment(string name)
+        public Assessment(AssessmentTakerDetails assessmentTakerDetails)
         {
-            
-            Guard.Against.NullOrEmpty(name, nameof(name));
+
+
             AssessmentGUID = Guid.NewGuid();
-            Name = name;            
+            Details = assessmentTakerDetails;
             DateCreated = DateTime.UtcNow;
             Status = AssessmentStatus.Pending;
-            _responses = new List<Response>();
+
         }
+
 
 
         public void AddResponse(Guid questionId, string answer)
@@ -45,31 +42,16 @@ namespace UnitTestInPractice.Domain.Root
         }
 
 
-        public void CompleteAssessment(int totalQuestion)
+        public void CompleteAssessment(int totalQuestion, SeverityLevel severityLevel)
         {
-           
             Status = AssessmentStatus.Completed;
-            FinalScore = CalculateScore(totalQuestion);
-            AssessmentFeedback = GenerateFeedback();
+            AssessmentFeedback = GenerateFeedback(severityLevel);
         }
 
 
-        private Score CalculateScore(int  totalQuestion)
-        {        
-            int scoreValue = (_responses.Count * 100) / totalQuestion;
-            return new Score(scoreValue);
-        }
 
-
-        private Feedback GenerateFeedback()
+        private Feedback GenerateFeedback(SeverityLevel severity)
         {
-            SeverityLevel severity = FinalScore.Value switch
-            {
-                <= 25 => SeverityLevel.Low,
-                > 25 and <= 50 => SeverityLevel.Moderate,
-                > 50 and <= 75 => SeverityLevel.High,
-                _ => SeverityLevel.Critical,
-            };
 
             var message = severity.Name switch
             {
