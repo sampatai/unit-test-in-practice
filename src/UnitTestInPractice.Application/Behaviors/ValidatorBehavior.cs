@@ -1,5 +1,7 @@
 ﻿
 
+using FluentValidation.Results;
+
 namespace UnitTestInPractice.Application.Behaviors;
 
 public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : MediatR.IBaseRequest
@@ -19,10 +21,18 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
 
         _logger.LogInformation("----- Validating command {CommandType}", typeName);
 
-        var failures = _validators
-            .Select(v => v.Validate(request))
-            .SelectMany(result => result.Errors)
-            .Where(error => error != null)
+
+        var context = new ValidationContext<TRequest>(request);
+
+        var validationFailures = await Task.WhenAll(
+            _validators.Select(validator => validator.ValidateAsync(context)));
+
+        var failures = validationFailures
+            .Where(validationResult => !validationResult.IsValid)
+            .SelectMany(validationResult => validationResult.Errors)
+            .Select(validationFailure => new ValidationFailure(
+                validationFailure.PropertyName,
+                validationFailure.ErrorMessage))
             .ToList();
 
         if (failures.Any())

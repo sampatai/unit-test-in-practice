@@ -4,8 +4,12 @@ public abstract class Validator<T> : AbstractValidator<T> where T : AssessmentCo
 {
     public Validator()
     {
-        RuleFor(x => x.Name)
+        RuleFor(x => x.DetailsCommand.FullName)
            .NotEmpty().WithMessage("Name is required.");
+        RuleFor(x => x.DetailsCommand.Address)
+          .NotEmpty().WithMessage("Address is required.");
+        RuleFor(x => x.DetailsCommand.Occupation)
+          .NotEmpty().WithMessage("Occupation is required.");
 
         RuleForEach(x => x.Responses).SetValidator(new ResponseValidator());
 

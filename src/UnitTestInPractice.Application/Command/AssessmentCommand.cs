@@ -13,5 +13,5 @@ namespace UnitTestInPractice.Application.Command
 
     }
     public record ResponseCommand(Guid QuestionId, string Answer);
-    public record DetailsCommand(string FullName, string Occupation, string Address)
+    public record DetailsCommand(string FullName, string Occupation, string Address);
 }
